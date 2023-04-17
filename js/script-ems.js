@@ -74,12 +74,11 @@ form.addEventListener('submit', (e) => {
         extension: extension,
         email: email,
         department: department
-    }; 
-    // newEmployees = [...employees, newEmployee];    
+    };         
 
     // PUSH THE NEW ARRAY TO THE *EXISTING* EMPLOYEES ARRAY
-    employees.push(newEmployee)
-    // employees = newEmployees;
+    employees.push(newEmployee);
+    // COUNT RECORDS NUMBER 
     totalRow +=1;
     empCount.innerHTML = `Total: ${totalRow}`; 
 
@@ -90,9 +89,8 @@ form.addEventListener('submit', (e) => {
     form.reset();
 
     // SET FOCUS BACK TO THE ID TEXT BOX
-    let boxes = document.getElementsByTagName("input");
-    boxes[0].focus();
-
+    let boxes = document.getElementsByTagName("input")
+    boxes[0].focus()
 });
 
 // DELETE EMPLOYEE
@@ -113,7 +111,10 @@ empTable.addEventListener('click', (e) => {
 // BUILD THE EMPLOYEES GRID
 function buildGrid() {
     // REMOVE THE EXISTING SET OF ROWS BY REMOVING THE ENTIRE TBODY SECTION           
-    empTable.innerHTML = "";
+    // empTable.innerHTML = "";  --This will delete the thead (dangerous!)
+
+    var empTable = document.getElementById("empTable"); // Get the table
+    empTable.removeChild(empTable.getElementsByTagName("tbody")[0]); // Remove first instance of body
 
     // REBUILD THE TBODY FROM SCRATCH
     const tbody = document.createElement('tbody');    
